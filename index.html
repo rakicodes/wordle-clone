@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+  	<meta charset="utf-8">
+  	<meta name="description" content="Your description goes here">
+  	<meta name="keywords" content="one, two, three">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Wordle</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="overlay hidden"></div>
+		<section class="popup hidden">
+			<p></p>
+		</section>
+		<img src="./images/leaderboard.png" alt="leaderboard logo">
+		<section class="game-stats hidden">
+			<span class="close-button">X</span>
+			<h2>Statistics</h2>
+			<section class="num-stats">
+				<section class="stat-container">
+					<span id="numsPlayed" class=""stat>0</span>
+					<span class="label">Played</span>
+				</section>
+				<section class="stat-container">
+					<span id="winRate" class=""stat>0</span>
+					<span class="label">Win %</span>
+				</section>
+				<section class="stat-container">
+					<span id="currStreak" class=""stat>0</span>
+					<span class="label">Current Streak</span>
+				</section>
+				<section class="stat-container">
+					<span id="maxStreak" class=""stat>0</span>
+					<span class="label">Max Streak</span>
+				</section>
+			</section>
+			<h2>Guess Distribution</h2>
+			<section class="guess-stats">
+				<section class="bar-container">
+					<span class="label">1</span>
+					<div class="bar bar-0">0</div>
+				</section>
+				<section class="bar-container">
+					<span class="label">2</span>
+					<div class="bar bar-1">0</div>
+				</section>
+				<section class="bar-container">
+					<span class="label">3</span>
+					<div class="bar bar-2">0</div>
+				</section>
+				<section class="bar-container">
+					<span class="label">4</span>
+					<div class="bar bar-3">0</div>
+				</section>
+				<section class="bar-container">
+					<span class="label">5</span>
+					<div class="bar bar-4">0</div>
+				</section>
+				<section class="bar-container">
+					<span class="label">6</span>
+					<div class="bar bar-5">0</div>
+				</section>
+
+			</section>
+			<section class="word-def hidden">
+				<span id="word"></span>
+				<span id="type"></span>
+				<p id="def"></p>
+			</section>
+			<span class="play-btn hidden">Play Again?</span>
+		</section>
+		<section id="tries">
+			<section id="try-0">
+				<span id="tryIndex-0-0" class="ltr-container"></span>
+				<span id="tryIndex-0-1" class="ltr-container"></span>
+				<span id="tryIndex-0-2" class="ltr-container"></span>
+				<span id="tryIndex-0-3" class="ltr-container"></span>
+				<span id="tryIndex-0-4" class="ltr-container"></span>
+			</section>
+			<section id="try-1">
+				<span id="tryIndex-1-0" class="ltr-container"></span>
+				<span id="tryIndex-1-1" class="ltr-container"></span>
+				<span id="tryIndex-1-2" class="ltr-container"></span>
+				<span id="tryIndex-1-3" class="ltr-container"></span>
+				<span id="tryIndex-1-4" class="ltr-container"></span>
+			</section>
+			<section id="try-2">
+				<span id="tryIndex-2-0" class="ltr-container"></span>
+				<span id="tryIndex-2-1" class="ltr-container"></span>
+				<span id="tryIndex-2-2" class="ltr-container"></span>
+				<span id="tryIndex-2-3" class="ltr-container"></span>
+				<span id="tryIndex-2-4" class="ltr-container"></span>
+			</section>
+			<section id="try-3">
+				<span id="tryIndex-3-0" class="ltr-container"></span>
+				<span id="tryIndex-3-1" class="ltr-container"></span>
+				<span id="tryIndex-3-2" class="ltr-container"></span>
+				<span id="tryIndex-3-3" class="ltr-container"></span>
+				<span id="tryIndex-3-4" class="ltr-container"></span>
+			</section>
+			<section id="try-4">
+				<span id="tryIndex-4-0" class="ltr-container"></span>
+				<span id="tryIndex-4-1" class="ltr-container"></span>
+				<span id="tryIndex-4-2" class="ltr-container"></span>
+				<span id="tryIndex-4-3" class="ltr-container"></span>
+				<span id="tryIndex-4-4" class="ltr-container"></span>
+			</section>
+			<section id="try-5">
+				<span id="tryIndex-5-0" class="ltr-container"></span>
+				<span id="tryIndex-5-1" class="ltr-container"></span>
+				<span id="tryIndex-5-2" class="ltr-container"></span>
+				<span id="tryIndex-5-3" class="ltr-container"></span>
+				<span id="tryIndex-5-4" class="ltr-container"></span>
+			</section>
+		</section>
+
+		<section id="keyboard">
+			<section class="top">
+				<span class="screen-kb" id="q-kb">Q</span>
+				<span class="screen-kb" id="w-kb">W</span>
+				<span class="screen-kb" id="e-kb">E</span>
+				<span class="screen-kb" id="r-kb">R</span>
+				<span class="screen-kb" id="t-kb">T</span>
+				<span class="screen-kb" id="y-kb">Y</span>
+				<span class="screen-kb" id="u-kb">U</span>
+				<span class="screen-kb" id="i-kb">I</span>
+				<span class="screen-kb" id="o-kb">O</span>
+				<span class="screen-kb" id="p-kb">P</span>
+			</section>
+
+			<section class="mid">
+				<span class="screen-kb" id="a-kb">A</span>
+				<span class="screen-kb" id="s-kb">S</span>
+				<span class="screen-kb" id="d-kb">D</span>
+				<span class="screen-kb" id="f-kb">F</span>
+				<span class="screen-kb" id="g-kb">G</span>
+				<span class="screen-kb" id="h-kb">H</span>
+				<span class="screen-kb" id="j-kb">J</span>
+				<span class="screen-kb" id="k-kb">K</span>
+				<span class="screen-kb"id="l-kb">L</span>
+			</section>
+
+			<section class="bottom">
+				<span class="screen-kb" id="enter-kb">ENTER</span>
+				<span class="screen-kb" id="z-kb">Z</span>
+				<span class="screen-kb" id="x-kb">X</span>
+				<span class="screen-kb" id="c-kb">C</span>
+				<span class="screen-kb" id="v-kb">V</span>
+				<span class="screen-kb" id="b-kb">B</span>
+				<span class="screen-kb" id="n-kb">N</span>
+				<span class="screen-kb" id="m-kb">M</span>
+				<span class="screen-kb" id="del-kb">DELETE</span>
+			</section>
+
+		</section>
+
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
+
